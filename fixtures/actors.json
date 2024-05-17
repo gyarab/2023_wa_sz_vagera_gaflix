@@ -1,0 +1,22 @@
+[
+{
+  "model": "filmy.actor",
+  "pk": 1,
+  "fields": {
+    "name": "Johnny Depp",
+    "birth_year": 1985,
+    "main_picture": "",
+    "description": "Pirati z karibiku"
+  }
+},
+{
+  "model": "filmy.actor",
+  "pk": 2,
+  "fields": {
+    "name": "Will Smith",
+    "birth_year": 1985,
+    "main_picture": "",
+    "description": "King Richard - oscar"
+  }
+}
+]

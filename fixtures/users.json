@@ -1,0 +1,20 @@
+[
+{
+  "model": "auth.user",
+  "pk": 1,
+  "fields": {
+    "password": "pbkdf2_sha256$720000$MbShHkdEPqgprFLzo5VHSv$W1eBmfyDzeFcfggPTHiTF0EIFRuEjNx8Ai/uoHSsX6Y=",
+    "last_login": "2024-05-17T06:40:43.081Z",
+    "is_superuser": true,
+    "username": "admin",
+    "first_name": "",
+    "last_name": "",
+    "email": "jakub.vagera@student.gyarab.cz",
+    "is_staff": true,
+    "is_active": true,
+    "date_joined": "2024-05-17T06:40:15.972Z",
+    "groups": [],
+    "user_permissions": []
+  }
+}
+]

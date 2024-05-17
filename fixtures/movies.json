@@ -1,0 +1,35 @@
+[
+{
+  "model": "filmy.movie",
+  "pk": 1,
+  "fields": {
+    "name": "Pelisky",
+    "year": 28,
+    "footage": 45,
+    "description": "1969",
+    "main_picture": ""
+  }
+},
+{
+  "model": "filmy.movie",
+  "pk": 2,
+  "fields": {
+    "name": "Hori ma panenko",
+    "year": 1960,
+    "footage": 65,
+    "description": "Miroslav Foglar",
+    "main_picture": ""
+  }
+},
+{
+  "model": "filmy.movie",
+  "pk": 3,
+  "fields": {
+    "name": "Lid vs Larry Flint",
+    "year": 1999,
+    "footage": 58,
+    "description": "jklasjkldf",
+    "main_picture": ""
+  }
+}
+]
