@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-!c+8z!hsfe^e&i01=i*c^=phq&_f6a2ll!2bqe6$=mm5hbu78h
 DEBUG = True
 
 # ALLOWED_HOSTS = ['rp.toskanka.cz','rp.toskanka.cz:8000','localhost','django.toskanka.cz']
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['wa.dtcloud.cz','wa.dtcloud.cz:8099','localhost']
 
 
 # Application definition
