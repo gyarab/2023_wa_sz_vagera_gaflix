@@ -3,9 +3,74 @@
 {% block 'title' %}{{movie.name}} | {{ block.super }}{% endblock %}
 
 {% block 'content' %}
-    <h1>{{ movie.name }}</h1>
+<center>
+   <br>
+    <h1><b>{{ movie.name }}</b></h1>
+    <br>
+    <img src="{% if movie.main_picture %}{{movie.main_picture}}{% else %}//place-hold.it/180x100/{% endif %}" alt="{{movie.name}}">
+</center>
+<center>
+    <br>
+    <div class="row">
+        <div class="col-3">
+        </div>
+        <div class="col-6">
+            <div class="row">
+                <div class="col-12">
+    <h5 style="float:left">Year of release:  </h5>
 
-    <p>
-        {{movie.description}}
-    </p>
+    <h5 style="float:right">
+       {{movie.year}}
+    </h5>
+</div>
+</div>
+<div class="row">
+    <div class="col-12">
+        {% if movie.director %}
+    <h5 style="float:left">Director:  </h5>
+
+    <h5 style="float:right">
+       <b>{{movie.director}}</b>
+    </h5>
+    {% endif %}
+</div>
+</div>
+<div class="row">
+    <div class="col-12">
+        {%if movie.genres.all %}
+        <h5 style="float:left">Genres :&nbsp; </h6>
+        {% endif %}
+        {% for genre in movie.genres.all %}
+        
+        <span style="float:right" class="badge rounded-pill text-bg-primary">{{genre.name}}</span>
+        {% endfor %}
+    </div>
+</div>
+<div class="row">
+    <div class="col-12">
+        {% if movie.description|truncatewords_html:10 %}
+        <h5 style="float:left">Short description :&nbsp;</h5>
+        <br>
+        <br>
+        
+        {% endif %}
+        <h6>{{ movie.description|truncatewords_html:10 }}</h6>
+
+    </div>
+</div>
+<div class="row">
+    <div class="col-12">
+        <br>
+        <br>
+        <a style="float:right" href="{% url 'movies' %}" class="btn btn-primary">Menu</a>
+    </div>
+</div>
+</div>
+<div class="col-3">
+</div>
+</div>
+<br>
+<br>
+
+</center>
 {% endblock %}
