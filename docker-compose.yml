@@ -1,0 +1,47 @@
+version: "3.3"
+services:
+  web:
+    restart: unless-stopped
+    build: .
+    pull_policy: build
+    # ports:
+    #   - 8000:80
+    volumes:
+      - ./app:/app
+
+    labels:
+      - "traefik.enable=true"
+
+      - "traefik.http.routers.wa-vagera-http.rule=Host(`vagera.wa.dtcloud.cz`)"
+      - "traefik.http.routers.wa-vagera-http.entrypoints=web"
+      - "traefik.http.routers.wa-vagera-http.middlewares=wa-vagera-redirect-https@docker"
+
+      - "traefik.http.middlewares.wa-vagera-redirect-https.redirectscheme.scheme=https"
+      - "traefik.http.middlewares.wa-vagera-redirect-https.redirectscheme.permanent=true"
+
+      - "traefik.http.routers.wa-vagera-https.rule=Host(`vagera.wa.dtcloud.cz`)"
+      - "traefik.http.routers.wa-vagera-https.entrypoints=websecure"
+      - "traefik.http.routers.wa-vagera-https.tls=true"
+      - "traefik.http.routers.wa-vagera-https.tls.certresolver=letsencrypt"
+
+  static:
+    image: nginx:alpine
+    restart: unless-stopped
+
+    volumes:
+      - ./app/static:/usr/share/nginx/html/static:ro
+
+    labels:
+      - "traefik.enable=true"
+
+      - "traefik.http.routers.wa-vagera-static-http.rule=Host(`vagera.wa.dtcloud.cz`) && PathPrefix(`/static`)"
+      - "traefik.http.routers.wa-vagera-static-http.entrypoints=web"
+      - "traefik.http.routers.wa-vagera-static-http.middlewares=wa-vagera-static-redirect-https@docker"
+
+      - "traefik.http.middlewares.wa-vagera-static-redirect-https.redirectscheme.scheme=https"
+      - "traefik.http.middlewares.wa-vagera-static-redirect-https.redirectscheme.permanent=true"
+
+      - "traefik.http.routers.wa-vagera-static-https.rule=Host(`vagera.wa.dtcloud.cz`) && PathPrefix(`/static`)"
+      - "traefik.http.routers.wa-vagera-static-https.entrypoints=websecure"
+      - "traefik.http.routers.wa-vagera-static-https.tls=true"
+      - "traefik.http.routers.wa-vagera-static-https.tls.certresolver=letsencrypt"
