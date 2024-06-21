@@ -1,3 +1,4 @@
 django
-pillow
+#pillow
 wsgi
+pyyaml
