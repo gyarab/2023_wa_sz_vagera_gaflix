@@ -12,17 +12,17 @@ services:
     labels:
       - "traefik.enable=true"
 
-      - "traefik.http.routers.wa-vagera-http.rule=Host(`vagera.wa.dtcloud.cz`)"
-      - "traefik.http.routers.wa-vagera-http.entrypoints=web"
-      - "traefik.http.routers.wa-vagera-http.middlewares=wa-vagera-redirect-https@docker"
+      - "traefik.http.routers.wa-jv-http.rule=Host(`jv.wa.dtcloud.cz`)"
+      - "traefik.http.routers.wa-jv-http.entrypoints=web"
+      - "traefik.http.routers.wa-jv-http.middlewares=wa-jv-redirect-https@docker"
 
-      - "traefik.http.middlewares.wa-vagera-redirect-https.redirectscheme.scheme=https"
-      - "traefik.http.middlewares.wa-vagera-redirect-https.redirectscheme.permanent=true"
+      - "traefik.http.middlewares.wa-jv-redirect-https.redirectscheme.scheme=https"
+      - "traefik.http.middlewares.wa-jv-redirect-https.redirectscheme.permanent=true"
 
-      - "traefik.http.routers.wa-vagera-https.rule=Host(`vagera.wa.dtcloud.cz`)"
-      - "traefik.http.routers.wa-vagera-https.entrypoints=websecure"
-      - "traefik.http.routers.wa-vagera-https.tls=true"
-      - "traefik.http.routers.wa-vagera-https.tls.certresolver=letsencrypt"
+      - "traefik.http.routers.wa-jv-https.rule=Host(`jv.wa.dtcloud.cz`)"
+      - "traefik.http.routers.wa-jv-https.entrypoints=websecure"
+      - "traefik.http.routers.wa-jv-https.tls=true"
+      - "traefik.http.routers.wa-jv-https.tls.certresolver=letsencrypt"
 
   static:
     image: nginx:alpine
@@ -34,14 +34,14 @@ services:
     labels:
       - "traefik.enable=true"
 
-      - "traefik.http.routers.wa-vagera-static-http.rule=Host(`vagera.wa.dtcloud.cz`) && PathPrefix(`/static`)"
-      - "traefik.http.routers.wa-vagera-static-http.entrypoints=web"
-      - "traefik.http.routers.wa-vagera-static-http.middlewares=wa-vagera-static-redirect-https@docker"
+      - "traefik.http.routers.wa-jv-static-http.rule=Host(`jv.wa.dtcloud.cz`) && PathPrefix(`/static`)"
+      - "traefik.http.routers.wa-jv-static-http.entrypoints=web"
+      - "traefik.http.routers.wa-jv-static-http.middlewares=wa-jv-static-redirect-https@docker"
 
-      - "traefik.http.middlewares.wa-vagera-static-redirect-https.redirectscheme.scheme=https"
-      - "traefik.http.middlewares.wa-vagera-static-redirect-https.redirectscheme.permanent=true"
+      - "traefik.http.middlewares.wa-jv-static-redirect-https.redirectscheme.scheme=https"
+      - "traefik.http.middlewares.wa-jv-static-redirect-https.redirectscheme.permanent=true"
 
-      - "traefik.http.routers.wa-vagera-static-https.rule=Host(`vagera.wa.dtcloud.cz`) && PathPrefix(`/static`)"
-      - "traefik.http.routers.wa-vagera-static-https.entrypoints=websecure"
-      - "traefik.http.routers.wa-vagera-static-https.tls=true"
-      - "traefik.http.routers.wa-vagera-static-https.tls.certresolver=letsencrypt"
+      - "traefik.http.routers.wa-jv-static-https.rule=Host(`jv.wa.dtcloud.cz`) && PathPrefix(`/static`)"
+      - "traefik.http.routers.wa-jv-static-https.entrypoints=websecure"
+      - "traefik.http.routers.wa-jv-static-https.tls=true"
+      - "traefik.http.routers.wa-jv-static-https.tls.certresolver=letsencrypt"
